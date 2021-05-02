@@ -1,0 +1,25 @@
+Constant Story "PARALLAX";
+Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
+
+#include "Parser";
+#include "VerbLib";
+
+! Entry points
+[ DeathMessage;
+  if (deadflag == 3) {
+    print "<END OF EXPERIMENTAL BUILD^^
+          Thank you for playing!^^
+          --Daneel";
+  }
+  else rfalse;
+];
+
+#include "Grammar";
+
+! Engine components, assets, and story files
+#include ">story/0_intro.inf";
+
+
+[ Initialise;
+  location = Init;
+];
