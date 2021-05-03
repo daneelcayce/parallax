@@ -30,11 +30,14 @@ Core rooms and objects:
     - probably where this ends for the first stages
 
 
-Goal 1: Extended rooms and character depth.
+## Goal 1: Extended rooms and character depth. All the neat random objects.
 - more detail in notebook guy's office; objects, reading material, etc
 - likewise, more detail in the computer room
 - expand the tower
 - start making an actual story here about notebook guy and the lady who built this place
+
+## Goal 2: An actual plot.
+(No comment.)
 
 ## Level ideas (not in order)
 ### Things that are outside the system
