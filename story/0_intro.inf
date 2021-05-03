@@ -6,7 +6,8 @@
 
 Object Init "DEAD END" with
     description
-        "You are at the dead end of a dirt road. Off in the distance, you can see a few buildings, maybe the edge of a town.",
+        "You are at the dead end of a dirt road. Off in the distance to the north, you can see a few buildings, maybe the edge of a town.",
+    n_to Fork,
 has light;
 
 Object -> Lamp "portable lamp" with
@@ -35,3 +36,11 @@ Object -> Lamp "portable lamp" with
         SwitchOff:  give self ~light ~on;
     ],
 has switchable;
+
+
+
+Object Fork "Fork" with
+    description
+        "You are at the fork of a road.",
+    s_to Init,
+has light;
