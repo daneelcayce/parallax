@@ -1,5 +1,41 @@
 # Parallax planning document
 
+## The Prototype
+### Goal 0: Semi-playable.
+Core rooms and objects:
+- dead end
+    - lamp
+- office building
+    - one or two basic rooms
+    - printer room and basic peacock behavior (has the login paper, which also has your name on it)
+    - keycard and locks can wait until we extend the building
+    - spooky forest out the back for now
+    - notebook
+        - basic info for the time being (i.e., telling us where the big computer is)
+        - extend and figure out lookup/tracking as needed
+- secret location of the system servers (basement for now)
+    - computer, we'll add the login stuff later on
+- the system's main city
+    - I guess this is where we're "rezzing in" for the time being.
+    - hub for other places
+    - side quests and stuff will come later
+- the tower
+    - once again, just a couple of basic areas
+    - key information about the notebook guy, hologram cutscene
+    - there's a security system, but it lets you in anyway
+    - make up some bullshit that directs us to the next location
+        - map added to your database or something, all mysterious and stuff
+- ice cave!
+    - we meet the dude! he tells us a story!
+    - probably where this ends for the first stages
+
+
+Goal 1: Extended rooms and character depth.
+- more detail in notebook guy's office; objects, reading material, etc
+- likewise, more detail in the computer room
+- expand the tower
+- start making an actual story here about notebook guy and the lady who built this place
+
 ## Level ideas (not in order)
 ### Things that are outside the system
 Intro -- the classic dirt road. The fork can take you to two different places (it won't matter which one you visit first.)
@@ -13,7 +49,7 @@ Ominous forest.
 
 A town where something's... not quite right. There's a lady who lives at the edge of town, and everyone's pretty sure she's a witch. She may or may not be helpful, or even benign.
 
-Underground bunker, with all of the neat mysterious stuff inside. Could take inspiration from a _lot_ of things here. The important points:
+A secret location, probably a bunker or in the basement of the office building, with all of the neat mysterious stuff inside. Could take inspiration from a _lot_ of things here. The important points:
     - There's a really old computer in there, of some variety. Powerful for the time Could be a System/370 mainframe, a VAX... or a bunch of SPARCstations.
     - It's clear that this place was set up by whoever owns the notebook; that's probably what leads you to it.
     - You get zapped into the system, somehow.
