@@ -2,7 +2,36 @@
 ! Parallax - Intro Level
 ! -----------------------------------------------------------------------------
 
-Object Init "HELLO WORLD" with
+! Need initial story text, but I'll deal with that later.
+
+Object Init "DEAD END" with
     description
-        "Hello world!",
+        "You are at the dead end of a dirt road. Off in the distance, you can see a few buildings, maybe the edge of a town.",
 has light;
+
+Object -> Lamp "portable lamp" with
+    name
+        'lamp' 'torch' 'lantern' 'light',
+    initial
+        "There is a small handheld lamp nearby.",
+    description [;
+        if (self.location hasnt light)
+            "The lamp gives off a soft glow.";
+        "The lamp feels light enough, but the rust is starting to rub off and make your hand smell funny.";
+    ],
+    before [;
+        SwitchOn:   if (self hasnt visited) {
+                        give self visited;
+                        "You clean the lamp as best as you can on your sleeve, but it doesn't seem to help too much.^^";
+                    }
+        Examine:    if (self hasnt visited)
+                        "The lamp looks pretty old. It must have been sitting here for a long time -- its glass is covered in a thick layer of dirt.";
+                    if (self has on)
+                        self.description();
+                    "The lamp is currently off.";
+    ],
+    after [;
+        SwitchOn:   give self light on;
+        SwitchOff:  give self ~light ~on;
+    ],
+has switchable;
