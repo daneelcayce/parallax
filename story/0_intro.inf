@@ -1,14 +1,17 @@
 ! -----------------------------------------------------------------------------
 ! Parallax - Intro Level
 ! -----------------------------------------------------------------------------
-
+! Notes
+! -----------------------------------------------------------------------------
 ! Need initial story text, but I'll deal with that later.
+! The office building will eventually be in a weird little town (think Gravity Falls), but for now it'll just be where we go first.
+! -----------------------------------------------------------------------------
 
 Object Init "DEAD END" with
     description
         "You are at the dead end of a dirt road. Off in the distance to the north, you can see a few buildings, maybe the edge of a town.",
-    n_to Fork,
-has light;
+    n_to OfficeBuilding,
+has static light;
 
 Object -> Lamp "portable lamp" with
     name
@@ -37,10 +40,28 @@ Object -> Lamp "portable lamp" with
     ],
 has switchable;
 
-
-
-Object Fork "Fork" with
+Object DirtRoad "DIRT ROAD" with
     description
-        "You are at the fork of a road.",
+        "You are on a dirt road. Ahead of you, to the north, you can see a rather ordinary office building. You can also go back south, to the dead end.",
+    before [;
+        Go:     if (second == n_obj)
+                    if (KeyCard in player)
+                        <<Go north>>
+                    "Wait. Do you see that keycard on the side of the road?";
+    ],
+    n_to OfficeBuilding,
     s_to Init,
 has light;
+
+Object -> KeyCard "keycard" with
+    name 'keycard' 'key' 'card',
+    description
+        "The keycard doesn't seem to have any identifying markings -- but it stands to reason that it might belong to someone who works in that office.",
+has scenery;
+
+Object OfficeBuilding "Office Building" with
+    description
+        "You are in the main entrance of an office building. It looks like no one's been here in a while.^^
+        ",
+    s_to Init,
+has static light;
