@@ -64,4 +64,33 @@ Object OfficeBuilding "Office Building" with
         "You are in the main entrance of an office building. It looks like no one's been here in a while.^^
         ",
     s_to Init,
+    e_to OfficeSpace,
+has static light;
+
+
+Object OfficeSpace "Main Office Floor" with
+    description
+        "You are in the main area of an office building.",
+    w_to OfficeBuilding,
+    u_to Office,
+has static light;
+
+
+Object Office "Unknown Office" with
+    description
+        "You are in an executive office.",
+    d_to OfficeSpace,
+has static light;
+
+Object -> Terminal "terminal" with
+    name
+        'terminal' 'term',
+    description
+        "It's an old computer terminal.",
+has static;
+
+
+Object ServerRoom "Server Room" with
+    description
+        "You are in a fairly large server room.",
 has static light;
