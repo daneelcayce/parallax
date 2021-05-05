@@ -1,16 +1,15 @@
 ! -----------------------------------------------------------------------------
 ! Parallax - Intro Level
-! -----------------------------------------------------------------------------
-! Notes
-! -----------------------------------------------------------------------------
 ! Need initial story text, but I'll deal with that later.
 ! The office building will eventually be in a weird little town (think Gravity Falls), but for now it'll just be where we go first.
+! -----------------------------------------------------------------------------
+! Dirt Road Area
 ! -----------------------------------------------------------------------------
 
 Object Init "DEAD END" with
     description
         "You are at the dead end of a dirt road. Off in the distance to the north, you can see a few buildings, maybe the edge of a town.",
-    n_to OfficeBuilding,
+    n_to DirtRoad,
 has static light;
 
 Object -> Lamp "portable lamp" with
@@ -44,22 +43,40 @@ Object DirtRoad "DIRT ROAD" with
     description
         "You are on a dirt road. Ahead of you, to the north, you can see a rather ordinary office building. You can also go back south, to the dead end.",
     before [;
-        Go:     if (second == n_obj)
-                    if (KeyCard in player)
-                        <<Go north>>
-                    "Wait. Do you see that keycard on the side of the road?";
+        Go: if (KeyCard has scenery) {
+            KeyCard.cant_go();
+            rtrue;
+        }
     ],
-    n_to OfficeBuilding,
+    n_to OfficeEntry,
     s_to Init,
 has light;
 
 Object -> KeyCard "keycard" with
     name 'keycard' 'key' 'card',
-    description
-        "The keycard doesn't seem to have any identifying markings -- but it stands to reason that it might belong to someone who works in that office.",
+    description [;
+        print "The keycard doesn't seem to have any identifying markings.";
+        if (OfficeEntry hasnt visited)
+            "But it stands to reason that it might belong to someone who works in that office.";
+        rtrue;
+    ],
+    before [;
+        Take:   give self ~scenery;
+        Drop:   "You're gonna need that, y'know.";
+    ],
+    cant_go [;
+        "Hey, do you see that keycard by the side of the road?";
+    ],
 has scenery;
 
-Object OfficeBuilding "Office Building" with
+
+! -----------------------------------------------------------------------------
+! Office building
+! Skeletal for now, we'll probably give it its own thing later.
+! We actually might not know that we're in an executive office? I'll call it that anyway for now.
+! -----------------------------------------------------------------------------
+
+Object OfficeEntry "Office Building" with
     description
         "You are in the main entrance of an office building. It looks like no one's been here in a while.^^
         ",
@@ -71,12 +88,12 @@ has static light;
 Object OfficeSpace "Main Office Floor" with
     description
         "You are in the main area of an office building.",
-    w_to OfficeBuilding,
-    u_to Office,
+    w_to OfficeEntry,
+    u_to ExecOffice,
 has static light;
 
 
-Object Office "Unknown Office" with
+Object ExecOffice "Executive Office" with
     description
         "You are in an executive office.",
     d_to OfficeSpace,
