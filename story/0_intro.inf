@@ -23,32 +23,42 @@ Object -> Lamp "portable lamp" with
         "The lamp feels light enough, but the rust is starting to rub off and make your hand smell funny.";
     ],
     before [;
-        SwitchOn:   if (self hasnt visited) {
-                        give self visited;
-                        "You clean the lamp as best as you can on your sleeve, but it doesn't seem to help too much.^^";
+        SwitchOn:
+            if (self hasnt visited) {
+                give self visited;
+                "You clean the lamp as best as you can on your sleeve, but it doesn't seem to help too much.^^";
                     }
-        Examine:    if (self hasnt visited)
-                        "The lamp looks pretty old. It must have been sitting here for a long time -- its glass is covered in a thick layer of dirt.";
-                    if (self has on)
-                        self.description();
-                    "The lamp is currently off.";
+        Examine:
+            if (self hasnt visited)
+                "The lamp looks pretty old. It must have been sitting here for a long time -- its glass is covered in a thick layer of dirt.";
+            if (self has on)
+                    self.description();
+            "The lamp is currently off.";
     ],
     after [;
-        SwitchOn:   give self light on;
-        SwitchOff:  give self ~light ~on;
+        SwitchOn:
+            give self light on;
+        SwitchOff:
+            give self ~light ~on;
     ],
 has switchable;
 
+
+
 Object DirtRoad "DIRT ROAD" with
     description
-        "You are on a dirt road. Ahead of you, to the north, you can see a rather ordinary office building. You can also go back south, to the dead end.",
+        "You are on a dirt road. There's an ordinary office building to the north. You can also go back south, to the dead end.",
     before [;
-        Go: if (KeyCard has scenery) {
+        Go: if (KeyCard has scenery)
             KeyCard.cant_go();
-            rtrue;
-        }
     ],
-    n_to OfficeEntry,
+    after [;
+        Enter:
+            if (OfficeDoor has open)
+                give OfficeDoor ~open locked;
+                "The door locks behind you.";
+    ],
+    n_to OfficeDoor,
     s_to Init,
 has light;
 
@@ -56,13 +66,15 @@ Object -> KeyCard "keycard" with
     name 'keycard' 'key' 'card',
     description [;
         print "The keycard doesn't seem to have any identifying markings.";
-        if (OfficeEntry hasnt visited)
+        if (ExecOffice hasnt visited)
             "But it stands to reason that it might belong to someone who works in that office.";
         rtrue;
     ],
     before [;
-        Take:   give self ~scenery;
-        Drop:   "You're gonna need that, y'know.";
+        Take:
+            give self ~scenery;
+        Drop:
+            "You're gonna need that, y'know.";
     ],
     cant_go [;
         "Hey, do you see that keycard by the side of the road?";
@@ -75,22 +87,54 @@ has scenery;
 ! Skeletal for now, we'll probably give it its own thing later.
 ! We actually might not know that we're in an executive office? I'll call it that anyway for now.
 ! -----------------------------------------------------------------------------
+Object OfficeDoor "door" with
+    name
+        'door',
+    with_key KeyCard,
+    before [;
+        Open:
+            if (KeyCard in player) rfalse;
+            if (player in DirtRoad)
+                KeyCard.cant_go();
+            print "The door emits a steady beep, and the light turns green.";
+            rfalse;
+    ],
+    when_closed
+        "A steady red light glows from above the door's handle.",
+    found_in
+        DirtRoad OfficeEntry,
+    door_to [;
+        if (player in DirtRoad)
+            return OfficeEntry;
+        return OfficeSpace;
+    ],
+    door_dir [;
+        if (player in DirtRoad)
+            return n_to;
+        return e_to;
+    ],
+has static door openable lockable locked;
+
 
 Object OfficeEntry "Office Building" with
-    description
-        "You are in the main entrance of an office building. It looks like no one's been here in a while.^^
-        ",
-    s_to Init,
-    e_to OfficeSpace,
+    name
+        'building' 'office',
+    description [;
+        give OfficeDoor ~open;
+        "You are in the main entrance of an office building. It looks like no one's been here in a while. The office door is to the east. You can also go back south.";
+    ],
+    s_to DirtRoad,
+    e_to OfficeDoor,
 has static light;
 
 
 Object OfficeSpace "Main Office Floor" with
     description
-        "You are in the main area of an office building.",
+        "You are in the main area of an office building. A door to the west leads back to the entryway.",
     w_to OfficeEntry,
     u_to ExecOffice,
 has static light;
+
 
 
 Object ExecOffice "Executive Office" with
@@ -104,7 +148,8 @@ Object -> Terminal "terminal" with
         'terminal' 'term',
     description
         "It's an old computer terminal.",
-has static;
+has static light;
+
 
 
 Object ServerRoom "Server Room" with
