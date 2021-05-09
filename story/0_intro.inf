@@ -35,9 +35,8 @@ Object -> Lamp "portable lamp" with
             "The lamp is currently off.";
         ThrowAt:
             if ((second == Peacock)) {
-                print "You miss by a wide margin, but it's enough to scare the peacock off.^^";
+                print "You miss by a wide margin, but it's enough to scare the peacock off.^";
                 move Peacock to thedark;
-                Printout.initial();
                 rtrue;
             }
     ],
@@ -162,48 +161,46 @@ Object -> Printer "dot matrix printer" with
     name
         'dot' 'matrix' 'printer',
     initial [;
-        print "A dusty dot matrix printer sits in the corner, forlorn.^";
+        print "A dusty dot matrix printer sits in the corner, forlorn.^^";
         if (Peacock in PrinterRoom)
-            "^It seems to be making a curious noise, however.";
-        rtrue;
+            "There is an angry peacock here!";
     ],
     description
         "The printer looks like it hasn't been used in roughly thirty-nine years... give or take.",
     before [;
         Examine:    if (Peacock in PrinterRoom) {
-                        if (Peacock has visited) {
+                        if (Peacock has visited)
                             "The peacock seems quite agitated, and doesn't seem to want to let you get a good look at it.";
-                        }
-                        "A wild and angry peacock appears!";
+                        
                     }
     ],
-has static;
+
+has static supporter;
 
 ! initial description doesn't print until after we're allowed to examine the printer
 ! description routine needs to be different between when it's still on the printer and when it's in your possession
 ! and yeah yeah I know, reindeer flotilla is a little played out, fight me
 Object -> -> Printout "paper printout" with
-    initial [;
-        give self ~concealed;
-        "The printer grinds to life, stamping letters into green-and-white continuous-feed paper.";
-    ],
+    name
+        'paper' 'printout' 'print',
     description [;
         if (self in Printer) {
             print "The paper smells kind of musty.^";
-            rfalse;
         }
         "The paper has three lines on it:^
         Your initials^
         reindeerflotilla^
         C212";
     ],
-    after [;
-        Take:   if (self in Printer) {
-                    print "The paper tears at the perforation with a very satisfying sound.^"; rfalse;
-                }
-                "You tuck the printout into your bag.";
+    before [;
+        Examine:    if ((self in Printer) && (Peacock in PrinterRoom))
+                        "The peacock's in your way, and looks pretty angry.";
+        Take:   if (self in Printer)
+                    print "The paper tears at the perforation with a very satisfying sound.^";
     ],
-has concealed scenery;
+    after [;
+        Take:   "You tuck the printout into your bag.";
+    ];
 
 
 ! cheating a little so I don't have to write a hallway until I'm ready to expand this.
