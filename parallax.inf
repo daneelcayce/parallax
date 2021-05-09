@@ -18,9 +18,16 @@ Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
 
 ! Engine components, assets, and story files
 #include ">engine/core.h";
+#include ">engine/char.h";
+
+! Users help me the peacock has its own header file
+#include ">assets/peacock.h";
+
 #include ">story/0_intro.inf";
 
 
+! move stuff to where it goes
 [ Initialise;
+  Peacock.location = PrinterRoom;
   location = Init;
 ];

@@ -162,17 +162,6 @@ Object -> -> Paper "paper printout" with
         "There's a paper printout here.",
 has scenery;
 
-! Peacock description is going to be kind of a round-robin approach...
-! oh god it needs a life routine. and a battle sequence. oh man.
-Object -> Peacock "angry peacock" with
-    name
-        'angry' 'peacock' 'bird',
-    initial
-        "A wild (and seemingly quite angry) peacock appears!",
-    description
-        "The peacock looks pretty annoyed with you right now.",
-has animate;
-
 
 ! cheating a little so I don't have to write a hallway until I'm ready to expand this.
 Room ExecOffice "Executive Office" with
