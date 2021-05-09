@@ -152,12 +152,18 @@ Object -> Printer "dot matrix printer" with
     description
         "The printer looks like it hasn't been used in roughly thirty-nine years... give or take.",
     before [;
-        Examine:    Peacock.initial();
+        Examine:    Peacock.initial(); !*boss fight music begins*
     ],
 has static;
 
+! need to declare the printout after the peacock has been defeated
+Object -> -> Paper "paper printout" with
+    description
+        "There's a paper printout here.",
+has scenery;
+
 ! Peacock description is going to be kind of a round-robin approach...
-! oh god it needs a life routine. oh man.
+! oh god it needs a life routine. and a battle sequence. oh man.
 Object -> Peacock "angry peacock" with
     name
         'angry' 'peacock' 'bird',
@@ -167,7 +173,12 @@ Object -> Peacock "angry peacock" with
         "The peacock looks pretty annoyed with you right now.",
 has animate;
 
+
+! cheating a little so I don't have to write a hallway until I'm ready to expand this.
 Room ExecOffice "Executive Office" with
+    initial
+        "Up the stairs, you find yourself in a long hallway. It doesn't take you long, however, to find the room number written on the paper.^^
+        The door opens with your keycard -- maybe this is the owner's office?",
     description
         "You are in an executive office.",
     d_to OfficeSpace;
