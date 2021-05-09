@@ -165,7 +165,7 @@ Object -> Peacock "angry peacock" with
         "A wild (and seemingly quite angry) peacock appears!",
     description
         "The peacock looks pretty annoyed with you right now.",
-has life;
+has animate;
 
 Room ExecOffice "Executive Office" with
     description
