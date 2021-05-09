@@ -81,13 +81,20 @@ has scenery;
 
 
 ! cheating a little so I don't have to write a hallway until I'm ready to expand this.
-
+! exec office init plays automagically because teleporting skips it
 Scene StairScene with
+    initial [;
+        "Up the stairs, you find yourself in a long hallway. It doesn't take you long, however, to find the room number written on the paper.";
+        Any();
+        "The door opens with your keycard -- maybe this is the owner's office?";
+        Any();
+        ExecOffice.initial();
+        move player to ExecOffice;
+    ],
 
 Room ExecOffice "Executive Office" with
     initial
-        "Up the stairs, you find yourself in a long hallway. It doesn't take you long, however, to find the room number written on the paper.^^
-        The door opens with your keycard -- maybe this is the owner's office?",
+        "Well, whoever's office this is, they're probably lower management -- it's nice, but not ostentatious.";
     description
         "You are in an executive office.",
     d_to OfficeSpace;
@@ -95,6 +102,8 @@ Room ExecOffice "Executive Office" with
 Object -> Terminal "terminal" with
     name
         'terminal' 'term',
+    initial
+        "An old computer terminal sits on the desk near the window. It appears to be on, giving off a soft light from the screen.",
     description
         "It's an old computer terminal.",
 has static light;
