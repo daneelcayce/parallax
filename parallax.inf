@@ -24,6 +24,7 @@ Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
 #include ">assets/peacock.h";
 
 #include ">story/0_intro.inf";
+#include ">story/1_office.inf";
 
 
 ! move stuff to where it goes

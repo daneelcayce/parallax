@@ -16,10 +16,10 @@ Class Scene with
         print "here is some initial scene text.";
         Any();
         self.description();
-    ]
+    ],
     description[;
         "After the player moves to the scene, the dialogue plays out.";
-    ];
+    ],
 has static light;
 
 
@@ -29,7 +29,7 @@ has static light;
     print "^^[Continue >]";
     @read_char 1 -> y;
 !    ClearScreen();
-    "^^"
+    "^^";
 ];
 
 
