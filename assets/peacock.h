@@ -23,15 +23,21 @@ Character Peacock "angry peacock" with
      ],
 has animate;
 
-! We'll just move stuff that's in our way to the darkness and call it good.
+! -----------------------------------------------------------------------------
+! Miniboss fight behavior routines!
+! After defeating the peacock, we'll move it to the darkness instead of removing it (because I intend for it to show up on the pseudo-Grid later).
+! For now, we're cheating and running the printout initial once we're done. I'll figure out something more robust once we do actual turn-based combat.
+! -----------------------------------------------------------------------------
+
 [ PeacockAttack x;
     x = random(5);
     print (string) x;
     switch(x) {
         !1: "The peacock isn't very impressed with your stunts. It tells you so by biting you, killing you instantly.";
-        default: "You lunge at the peacock, but it dodges you easily, running out of the room.";
+        default: "You lunge at the peacock, but it dodges you easily, running out of the room.^^";
     }
-    move Peacock to thedark; rtrue;
+    move Peacock to thedark;
+    Printout.initial();
 ];
 
 ! Need to determine which things you can throw and what happens with each one. Might work better with ThrownAt, etc.
@@ -39,7 +45,8 @@ has animate;
     x = random(4);
     print (string) x;
     switch (x) {
-        default: "You miss by a wide margin -- but it scares the peacock off.";
+        default: "You miss by a wide margin -- but it scares the peacock off.^^";
     }
-    move Peacock to thedark; rtrue;
+    move Peacock to thedark;
+    Printout.initial();
 ];
