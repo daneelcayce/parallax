@@ -166,13 +166,13 @@ Object -> -> Printout "paper printout" with
         "The printer grinds to life, stamping letters into green-and-white continuous-feed paper.",
     description [;
         if (self in Printer) {
-            print "The paper smells kind of musty.^",
+            print "The paper smells kind of musty.^";
             rfalse;
         }
         "The paper has three lines on it:^
         Your initials^
         reindeerflotilla^
-        C212"
+        C212";
     ],
     after [;
         Take:   if (self in Printer) {

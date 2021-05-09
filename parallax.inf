@@ -16,18 +16,20 @@ Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
 
 #include "Grammar";
 
-! Engine components, assets, and story files
+! Engine components
 #include ">engine/core.h";
 #include ">engine/char.h";
 
-! Users help me the peacock has its own header file
-#include ">assets/peacock.h";
+! Game assets
+! Users help me the peacock has its own asset file
+#include ">assets/peacock.inf";
 
+! Story files
 #include ">story/0_intro.inf";
 #include ">story/1_office.inf";
 
 
-! move stuff to where it goes
+! Game setup; move stuff to where it goes
 [ Initialise;
   Peacock.location = PrinterRoom;
   location = Init;
