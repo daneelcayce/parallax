@@ -17,6 +17,7 @@ Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
 #include "Grammar";
 
 ! Engine components, assets, and story files
+#include ">assets/core.h";
 #include ">story/0_intro.inf";
 
 

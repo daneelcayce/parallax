@@ -6,11 +6,10 @@
 ! Dirt Road Area
 ! -----------------------------------------------------------------------------
 
-Object Init "DEAD END" with
+Room Init "DEAD END" with
     description
         "You are at the dead end of a dirt road. Off in the distance to the north, you can see a few buildings, maybe the edge of a town.",
-    n_to DirtRoad,
-has static light;
+    n_to DirtRoad;
 
 Object -> Lamp "portable lamp" with
     name
@@ -45,7 +44,7 @@ has switchable;
 
 
 
-Object DirtRoad "DIRT ROAD" with
+Room DirtRoad "DIRT ROAD" with
     description
         "You are on a dirt road. There's an ordinary office building to the north. You can also go back south, to the dead end.",
     before [;
@@ -59,8 +58,7 @@ Object DirtRoad "DIRT ROAD" with
                 "The door locks behind you.";
     ],
     n_to OfficeDoor,
-    s_to Init,
-has light;
+    s_to Init;
 
 Object -> KeyCard "keycard" with
     name 'keycard' 'key' 'card',
@@ -116,7 +114,7 @@ Object OfficeDoor "door" with
 has static door openable lockable locked;
 
 
-Object OfficeEntry "Office Building" with
+Room OfficeEntry "Office Building" with
     name
         'building' 'office',
     description [;
@@ -124,24 +122,29 @@ Object OfficeEntry "Office Building" with
         "You are in the main entrance of an office building. It looks like no one's been here in a while. The office door is to the east. You can also go back south.";
     ],
     s_to DirtRoad,
-    e_to OfficeDoor,
-has static light;
+    e_to OfficeDoor;
 
 
-Object OfficeSpace "Main Office Floor" with
+Room OfficeSpace "Main Office Floor" with
     description
-        "You are in the main area of an office building. A door to the west leads back to the entryway.",
+        "You are in the main area of an office building.^^
+        A door to the west leads back to the entryway. There is a door to the north, and a set of stairs leads to the second floor.",
     w_to OfficeEntry,
-    u_to ExecOffice,
-has static light;
+    n_to PrinterRoom,
+    u_to ExecOffice;
 
 
+Room PrinterRoom "Printer Room" with
+    description
+        "You are in a printer room.^^
+        The main office space is to the south of you.",
+        s_to OfficeSpace;
 
-Object ExecOffice "Executive Office" with
+
+Room ExecOffice "Executive Office" with
     description
         "You are in an executive office.",
-    d_to OfficeSpace,
-has static light;
+    d_to OfficeSpace;
 
 Object -> Terminal "terminal" with
     name
@@ -152,7 +155,7 @@ has static light;
 
 
 
-Object ServerRoom "Server Room" with
+Room ServerRoom "Server Room" with
     description
         "You are in a fairly large server room.",
-has static light;
+has ~light;
