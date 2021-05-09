@@ -32,7 +32,10 @@ Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
 ! Game setup; move stuff to where it goes
 [ Initialise;
   move Peacock to PrinterRoom;
+  
+! changed for testing/debugging
   move Lamp to player;
   move KeyCard to player;
-  location = PrinterRoom;
+  move Printout to player;
+  location = ExecOffice;
 ];

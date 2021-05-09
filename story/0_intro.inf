@@ -149,7 +149,7 @@ Room OfficeSpace "Main Office Floor" with
     ],
     w_to OfficeEntry,
     n_to PrinterRoom,
-    u_to StairScene;
+    u_to ExecOffice;
 
 Room PrinterRoom "Printer Room" with
     description
@@ -174,7 +174,6 @@ Object -> Printer "dot matrix printer" with
                         
                     }
     ],
-
 has static supporter;
 
 ! initial description doesn't print until after we're allowed to examine the printer
@@ -201,17 +200,3 @@ Object -> -> Printout "paper printout" with
     after [;
         Take:   "You tuck the printout into your bag.";
     ];
-
-
-! cheating a little so I don't have to write a hallway until I'm ready to expand this.
-! exec office init plays automagically because teleporting skips it
-Scene StairScene with
-    initial [;
-        print "Up the stairs, you find yourself in a long hallway. It doesn't take you long, however, to find the room number written on the paper.";
-        Any();
-        print "The door opens with your keycard -- maybe this is the owner's office?";
-        Any();
-        ExecOffice.initial();
-        move player to ExecOffice;
-    ],
-has static light;
