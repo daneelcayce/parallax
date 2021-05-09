@@ -153,12 +153,33 @@ Object -> Printer "dot matrix printer" with
     before [;
         Examine:    Peacock.initial(); !*boss fight music begins*
     ],
+    after [;
+        Examine:    Printout.initial();
+    ],
 has static;
 
-! need to declare the printout after the peacock has been defeated
-Object -> -> Paper "paper printout" with
-    description
-        "There's a paper printout here.",
+! initial description doesn't print until after we're allowed to examine the printer
+! description routine needs to be different between when it's still on the printer and when it's in your possession
+! and yeah yeah I know, reindeer flotilla is a little played out, fight me
+Object -> -> Printout "paper printout" with
+    initial
+        "The printer grinds to life, stamping letters into green-and-white continuous-feed paper.",
+    description [;
+        if (self in Printer) {
+            print "The paper smells kind of musty.^",
+            rfalse;
+        }
+        "The paper has three lines on it:^
+        Your initials^
+        reindeerflotilla^
+        C212"
+    ],
+    after [;
+        Take:   if (self in Printer) {
+                    print "The paper tears at the perforation with a very satisfying sound.^"; rfalse;
+                }
+                "You tuck the printout into your bag.";
+    ],
 has scenery;
 
 
