@@ -140,6 +140,32 @@ Room PrinterRoom "Printer Room" with
         The main office space is to the south of you.",
         s_to OfficeSpace;
 
+Object -> Printer "dot matrix printer" with
+    name
+        'dot' 'matrix' 'printer',
+    initial [;
+        print "A dusty dot matrix printer sits in the corner, forlorn.";
+        if (Peacock in PrinterRoom)
+            "^It seems to be making a curious noise, however.";
+        rtrue;
+    ],
+    description
+        "The printer looks like it hasn't been used in roughly thirty-nine years... give or take.",
+    before [;
+        Examine:    Peacock.initial();
+    ],
+has static;
+
+! Peacock description is going to be kind of a round-robin approach...
+! oh god it needs a life routine. oh man.
+Object -> Peacock "angry peacock" with
+    name
+        'angry' 'peacock' 'bird',
+    initial
+        "A wild (and seemingly quite angry) peacock appears!",
+    description
+        "The peacock looks pretty annoyed with you right now.",
+has life;
 
 Room ExecOffice "Executive Office" with
     description
