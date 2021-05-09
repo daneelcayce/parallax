@@ -31,6 +31,8 @@ Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
 
 ! Game setup; move stuff to where it goes
 [ Initialise;
-  Peacock.location = PrinterRoom;
-  location = Init;
+  move Peacock to PrinterRoom;
+  move Lamp to player;
+  move KeyCard to player;
+  location = PrinterRoom;
 ];

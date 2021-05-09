@@ -33,6 +33,13 @@ Object -> Lamp "portable lamp" with
             if (self has on)
                     self.description();
             "The lamp is currently off.";
+        ThrowAt:
+            if ((second == Peacock)) {
+                print "You miss by a wide margin, but it's enough to scare the peacock off.^^";
+                move Peacock to thedark;
+                Printout.initial();
+                rtrue;
+            }
     ],
     after [;
         SwitchOn:
@@ -128,10 +135,22 @@ Room OfficeSpace "Main Office Floor" with
     description
         "You are in the main area of an office building.^^
         A door to the west leads back to the entryway. There is a door to the north, and a set of stairs leads to the second floor.",
+    before [;
+        Go:         if ((noun == u_obj) || (second == u_obj)) {
+                        if (PrinterRoom hasnt visited)
+                            "Do you hear that... squawking?^
+                            Whatever it is, it sounds like it's coming from the room to the north.";
+                        else {
+                            if (Printout has concealed)
+                                "The noise continues from the printer room. It's probably worth investigating.";
+                            if (~~(Printout in Player))
+                                "Hey, that printout might have been important.";
+                        }
+                    }
+    ],
     w_to OfficeEntry,
     n_to PrinterRoom,
     u_to StairScene;
-
 
 Room PrinterRoom "Printer Room" with
     description
@@ -143,7 +162,7 @@ Object -> Printer "dot matrix printer" with
     name
         'dot' 'matrix' 'printer',
     initial [;
-        print "A dusty dot matrix printer sits in the corner, forlorn.";
+        print "A dusty dot matrix printer sits in the corner, forlorn.^";
         if (Peacock in PrinterRoom)
             "^It seems to be making a curious noise, however.";
         rtrue;
@@ -151,10 +170,12 @@ Object -> Printer "dot matrix printer" with
     description
         "The printer looks like it hasn't been used in roughly thirty-nine years... give or take.",
     before [;
-        Examine:    Peacock.initial(); !*boss fight music begins*
-    ],
-    after [;
-        Examine:    Printout.initial();
+        Examine:    if (Peacock in PrinterRoom) {
+                        if (Peacock has visited) {
+                            "The peacock seems quite agitated, and doesn't seem to want to let you get a good look at it.";
+                        }
+                        "A wild and angry peacock appears!";
+                    }
     ],
 has static;
 
@@ -162,8 +183,10 @@ has static;
 ! description routine needs to be different between when it's still on the printer and when it's in your possession
 ! and yeah yeah I know, reindeer flotilla is a little played out, fight me
 Object -> -> Printout "paper printout" with
-    initial
-        "The printer grinds to life, stamping letters into green-and-white continuous-feed paper.",
+    initial [;
+        give self ~concealed;
+        "The printer grinds to life, stamping letters into green-and-white continuous-feed paper.";
+    ],
     description [;
         if (self in Printer) {
             print "The paper smells kind of musty.^";
@@ -180,7 +203,7 @@ Object -> -> Printout "paper printout" with
                 }
                 "You tuck the printout into your bag.";
     ],
-has scenery;
+has concealed scenery;
 
 
 ! cheating a little so I don't have to write a hallway until I'm ready to expand this.
