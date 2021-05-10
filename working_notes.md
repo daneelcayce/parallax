@@ -32,3 +32,6 @@ Maybe consolidate this so we aren't going into as many rooms before the office; 
 Basic peacock fight (i.e., startling) prototyped. Eventually we'll need an actual turn-based combat system, since we'll have multiple instances of (mini)boss fights, but that can wait. Worked out a _shitload_ of bugs here, but it's still pretty simplistic (and we need to be able to throw more than the lamp).
 
 Turn-based combat stuff will probably go in a separate header file, because I expect it to eventually get quite extensive.
+
+We're finally past this and into the executive office for the prototype. _Thank the Users._
+
