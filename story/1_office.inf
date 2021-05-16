@@ -8,23 +8,83 @@ Room ExecOffice "Executive Office" with
         Any();
         print "The door opens with the keycard you found -- maybe this is the owner's office?";
         Any();
-        "Well, whoever's office this is, they're probably lower management -- it's nice, but not ostentatious. There sure is a lot of stuff here, though.";
+        "Well, whoever's office this is, they're probably lower management -- it's nice, but not ostentatious. There sure is a lot of stuff here, though...";
     ],
     description
         "You are in an executive office.",
     d_to OfficeSpace;
 
-Object -> Terminal "terminal" with
+Object -> Desk "desk" with
+    name
+        'desk',
+    initial
+        "A large desk, made out of dark wood, takes up the back portion of the room. There's an old computer terminal on it -- it appears to be on, giving a soft light from the screen.",
+    description
+        "The desk doesn't seem to have much else on it.",
+has static supporter;
+
+! Eventually we'll be able to interact with it.
+Object -> -> Terminal "terminal" with
     name
         'terminal' 'term',
-    initial
-        "An old computer terminal sits on the desk near the window. It appears to be on, giving off a soft light from the screen.",
     description
         "It's an old computer terminal.",
-has static light;
+has static scenery light;
 
+Object -> -> Notebook "notebook" with
+    name
+        'notebook' 'book',
+    description
+        "It's a fairly nice, hardcover notebook. It's probably pretty old. But when you flip open the front cover, there isn't anything written in it.";
 
+Object -> OfficeShelf "shelf" with
+    name
+        'shelf',
+    initial
+        "There's a wooden bookshelf here.",
+    description
+        "About half of the shelves are filled with books, and the rest have a wide array of objects on them.",
+has static supporter;
 
+Object -> -> Abstract "journal article" with
+    name
+        'article' 'journal' 'abstract',
+    initial
+        "~AN EXPERIMENT IN MACHINE INTELLIGENCE AND LANGUAGE PROCESSING~",
+    description
+        "Looks like an old academic journal article.",
+    after [;
+        Examine: self.initial();
+    ];
+
+Object -> -> Theseus "mechanical maze" with
+    name
+        'theseus' 'maze' 'mouse',
+    description
+        "There's a little oblong metal thing in one of the maze corners. Kind of looks like a mouse.",
+    before [;
+        Take:   "It looks pretty heavy.";
+    ],
+has static;
+
+Object -> -> Chessboard "chessboard" with
+    name
+        'chess' 'board' 'chessboard',
+    description
+        "It looks like there's a game in progress, but you can't tell who seems to be winning.",
+    before [;
+        Take:   "Probably best to leave it alone. You wouldn't want to mess with someone's game, would you?";
+    ],
+has static;
+
+Object -> -> Giant "old laptop" with
+    name
+        'laptop' 'PC' 'compatible' 'PC-compatible',
+    description
+        "Maybe ~laptop~ is a little generous. It's one of those old IBM PC compatible machines. Probably weighs around fifteen pounds or so -- but that's what passed for portable in 1983.",
+    before [;
+        Take:   "Despite its name, it's hardly portable.";
+    ];
 
 Room ServerRoom "Server Room" with
     description
