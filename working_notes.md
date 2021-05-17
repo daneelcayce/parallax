@@ -57,6 +57,7 @@ Came up with some bullshit last name for Trent.
 
 Basic "meeting Trent" cutscene, although we aren't quite to the part where he explains what the hell's going on yet.
 
+Need a plan for the way I'm actually wrapping this up...
 
 
 Changes of note:
@@ -65,7 +66,6 @@ Add files:
 	- assets/tty.inf
 	- engine/ext_grammar.h
 	- story/1.1_trent_intro.inf
-
 
 engine/char.h:
 	- change how dialogue tags are printed
