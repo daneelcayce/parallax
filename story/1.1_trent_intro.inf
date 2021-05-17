@@ -1,0 +1,69 @@
+! -----------------------------------------------------------------------------
+! Trent's intro cutscene
+! -----------------------------------------------------------------------------
+Scene TrentIntro "EXECUTIVE OFFICE" with
+    initial [;
+        "As you walk down the hallway, you suddenly find yourself yanked backwards by your wrist. Before you can protest, you're back in the office -- facing a tall, serious-looking man.^^
+        Something about his expression says that this is his office -- and he's not very pleased with your intrusion.^^";
+    ],
+    description [;
+        NPC.q = "DOOR";
+        NPC.say("*BEEP*");
+        
+        Trent.say("How did you get in here?");
+        
+        print "You hold up the keycard.";
+        Any();
+        player.say("I found this outside. It let me in.");
+        
+        Trent.say("That isn't what I meant.");
+        print "He points to the terminal.";
+        Any();
+        Trent.say("You aren't one of our programmers. You shouldn't have been able to log in.");
+
+        player.say("There was a login for me, in the printer room. It was weird, but...");
+
+        Trent.say("But you were curious.");
+        print "You nod, slightly sheepishly.";
+        Any();
+        Trent.say("What's your name, kid?");
+        print "He studies you for a moment as you tell him, then sighs and shakes his head.";
+        Any();
+        Trent.say("It isn't safe here. She can't hear us, but if she got you into the system, then she knows you're here. Come on.");
+
+        player.say("What are you talking about? Who...?");
+
+        Trent.say("Alice, that's who.");
+        print "He nearly spits out the name -- looking over his shoulder at the door for a moment. Listening for something.";
+        Any();
+        Trent.say("I'll explain on the way. Come on.");
+
+        player.say("Hang on a second. I don't even know who you *are* --");
+
+        Trent.say("Trent.");
+        Trent.q = "TRENT";
+        Trent.say("Right now, I'm your best shot at getting out of here alive. You're gonna have to trust me.");
+
+        if (Notebook in player) {
+            print "His eyes flicker to the notebook in your hands.";
+            Any();
+            Trent.say("I'm glad you found that. We're gonna need it.");
+        }
+        else {
+            print "He glances toward the desk, then crosses the room and puts the notebook in his jacket pocket.";
+            move Notebook to Trent;
+            Any();
+            Trent.say("Better bring this with us. I think we're gonna need it.");
+        }
+
+        Trent.say("Let's go. We don't have long.");
+        <<Go out_obj>>;
+    ],
+    out_to IceCave,
+has light;
+
+
+
+Room IceCave "ICE CAVE" with
+    description
+        "temporary ice cave room";

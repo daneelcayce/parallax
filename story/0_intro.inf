@@ -88,7 +88,7 @@ has scenery;
 
 ! -----------------------------------------------------------------------------
 ! Office building
-! We actually might not know that we're in an executive office? I'll call it that anyway for now.
+! This door will end up being pretty complex, and we may need a couple of them, so it might eventually get its own class...
 ! -----------------------------------------------------------------------------
 Object OfficeDoor "door" with
     name
@@ -119,7 +119,7 @@ Object OfficeDoor "door" with
 has static door openable lockable locked;
 
 
-Room OfficeEntry "Office Building" with
+Room OfficeEntry "OFFICE BUILDING" with
     name
         'building' 'office',
     description [;
@@ -130,7 +130,7 @@ Room OfficeEntry "Office Building" with
     e_to OfficeDoor;
 
 
-Room OfficeSpace "Main Office Floor" with
+Room OfficeSpace "MAIN OFFICE FLOOR" with
     description
         "You are in the main area of an office building.^^
         A door to the west leads back to the entryway. There is a door to the north, and a set of stairs leads to the second floor.",
@@ -151,7 +151,7 @@ Room OfficeSpace "Main Office Floor" with
     n_to PrinterRoom,
     u_to ExecOffice;
 
-Room PrinterRoom "Printer Room" with
+Room PrinterRoom "PRINTER ROOM" with
     description
         "You are in a printer room.^^
         The main office space is to the south of you.",

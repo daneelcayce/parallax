@@ -35,3 +35,45 @@ Turn-based combat stuff will probably go in a separate header file, because I ex
 
 We're finally past this and into the executive office for the prototype. _Thank the Users._
 
+
+
+### 15 May
+Added objects to the office, and some basic descriptions.
+
+
+### 16 May
+Today's goals:
+	- Basic terminal sequence:
+		- sit down and login (do after sitting down, we'll do verbs and stuff later)
+		- read some stuff
+		- after getting up and going downstairs, we're somewhere different
+	- Basic tunnel/cave entrance
+
+I'd eventually like to have auto-sitting in the chair at the terminal, but whatever.
+
+Another thing that'd possibly be helpful for expository stuff: allowing dialogue as a list of strings, so that I don't have to do _nearly_ as much of `print "whatever"; Any();`. It's driving me crazy at the moment and isn't very efficient.
+
+Came up with some bullshit last name for Trent.
+
+Basic "meeting Trent" cutscene, although we aren't quite to the part where he explains what the hell's going on yet.
+
+
+
+Changes of note:
+Add files:
+	- assets/trent.inf
+	- assets/tty.inf
+	- engine/ext_grammar.h
+	- story/1.1_trent_intro.inf
+
+
+engine/char.h:
+	- change how dialogue tags are printed
+	- add player character for dialogue
+engine/core.h:
+	- uncomment PlayScene()
+
+story/1_office.inf:
+	- remove server room -- we won't need it for the prototype
+
+

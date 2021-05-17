@@ -1,0 +1,12 @@
+! -----------------------------------------------------------------------------
+! Trent's asset file.
+! Prototype means we're just gonna shortcut this, since we don't find out who he is just yet. Eventually I'll figure out how to elegantly change name/short_name as appropriate (which will be useful for characters we don't initially know to start, anyhow).
+! -----------------------------------------------------------------------------
+Character Trent "Trent" with
+    name
+        'man' 'guy' 'dude' 'Trent',
+    short_name
+        "Trent",
+    q "MAN",
+has male;
+  

@@ -1,5 +1,10 @@
 # Various Parallax bugs
 
+## Engine
+- [ ] Spacing issues with `say()` and `Any()`
+
+
+
 ## Intro Level
 ### Dead end
 - [ ] Opening the door at the dead end (first time) keeps the door locked, but the door _does_ open (light turns green, etc).
@@ -22,4 +27,7 @@
 - [ ] Need to be able to throw multiple things at the peacock, lunge at it, make noise, etc.
 
 
+
 ## Executive Office
+Nothing super weird so far?
+

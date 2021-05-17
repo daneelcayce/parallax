@@ -26,18 +26,18 @@ has static light;
 ! "Press any key to continue"
 ! Not clearing the screen right now, I don't think we need that
 [ Any x y;
-    print "^^[Continue >]";
+    print "^^^[Continue >]";
     @read_char 1 -> y;
 !    ClearScreen();
-    "^^";
+    "^^^";
 ];
 
 
 ! Automatic scene playthrough - useful for cutscenes, maybe?
 ! Also not clearing the screen, aesthetics can wait.
-![ PlayScene scene;
+[ PlayScene scene;
 !  ClearScreen();
-!  scene.initial();
-!  move player to scene;
-!  scene.description();
-!];
+  scene.initial();
+  move player to scene;
+  scene.description();
+];

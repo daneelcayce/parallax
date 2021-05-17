@@ -1,8 +1,9 @@
 ! -----------------------------------------------------------------------------
 ! Executive office
+! The terminal is located here, but it has its own file (assets/tty.inf).
 ! -----------------------------------------------------------------------------
 
-Room ExecOffice "Executive Office" with
+Room ExecOffice "EXECUTIVE OFFICE" with
     initial [;
         print "Up the stairs, you find yourself in a long hallway. It doesn't take you long, however, to find the room number written on the paper.";
         Any();
@@ -12,24 +13,28 @@ Room ExecOffice "Executive Office" with
     ],
     description
         "You are in an executive office.",
-    d_to OfficeSpace;
+    before [;
+        Go:     if ((noun == d_obj) || (second == d_obj)) {
+                    if (Terminal has visited)
+                        move Trent to TrentIntro;
+                        PlayScene(TrentIntro);
+                        rtrue;
+        }
+    ],
+    d_to OfficeSpace,
+has ~light;
+
+    
 
 Object -> Desk "desk" with
     name
         'desk',
     initial
-        "A large desk, made out of dark wood, takes up the back portion of the room. There's an old computer terminal on it -- it appears to be on, giving a soft light from the screen.",
+        "A large desk, made out of dark wood, takes up the back portion of the room. In front of the high-backed desk chair, there's an old computer terminal -- it appears to be on, giving a soft light from the screen.",
     description
         "The desk doesn't seem to have much else on it.",
 has static supporter;
 
-! Eventually we'll be able to interact with it.
-Object -> -> Terminal "terminal" with
-    name
-        'terminal' 'term',
-    description
-        "It's an old computer terminal.",
-has static scenery light;
 
 Object -> -> Notebook "notebook" with
     name
@@ -50,7 +55,8 @@ Object -> -> Abstract "journal article" with
     name
         'article' 'journal' 'abstract',
     initial
-        "~AN EXPERIMENT IN MACHINE INTELLIGENCE AND LANGUAGE PROCESSING~",
+        "*** A STUDY OF MACHINE INTELLIGENCE AND LANGUAGE PROCESSING ***^
+        T.C. PERRY",
     description
         "Looks like an old academic journal article.",
     after [;
@@ -86,7 +92,4 @@ Object -> -> Giant "old laptop" with
         Take:   "Despite its name, it's hardly portable.";
     ];
 
-Room ServerRoom "Server Room" with
-    description
-        "You are in a fairly large server room.",
-has ~light;
+
