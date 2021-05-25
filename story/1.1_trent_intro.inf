@@ -1,5 +1,6 @@
 ! -----------------------------------------------------------------------------
 ! Trent's intro cutscene
+! To-do: add a "yes/no" thing at the end of the first scene -- "ready, kid?"
 ! -----------------------------------------------------------------------------
 Scene TrentIntro "EXECUTIVE OFFICE" with
     initial [;
@@ -40,7 +41,7 @@ Scene TrentIntro "EXECUTIVE OFFICE" with
 
         player.say("Hang on a second. I don't even know who you *are* --");
 
-        Trent.say("Trent.");
+        Trent.say("My name's Trent.");
         Trent.q = "TRENT";
         Trent.say("Right now, I'm your best shot at getting out of here alive. You're gonna have to trust me.");
 
@@ -57,10 +58,30 @@ Scene TrentIntro "EXECUTIVE OFFICE" with
         }
 
         Trent.say("Let's go. We don't have long.");
-        <<Go out_obj>>;
+        PlayScene(TrentIntro2);
     ],
-    out_to IceCave,
 has light;
+
+
+
+Scene TrentIntro2 "OFFICE HALLWAY" with
+    initial
+        "Trent looks around for a second before nodding toward the end of the hall, opposite the way you came.",    
+    description [;
+        player.say("Where are we going?");
+        Any();
+        Trent.say("One of the only safe places left around here. We've only got about five minutes before Alice figures out what's going on and sends somebody after us.");
+        Any();
+        print("At the end of the hallway is a heavy, locked door, much like the others you've seen around here. Before you can reach for your keycard, Trent places a hand on the scanner. The door unlocks, revealing a set of stairs.");
+        Any();
+        Trent.say("Come on. This way.");
+        Any();
+        print("And without quite knowing why, you follow him down a flight of stairs and through another locked door. But when the door opens, the forest and town are gone.");
+        <<Go d_obj>>;
+    ],
+    d_to IceCave,
+has light;
+
 
 
 

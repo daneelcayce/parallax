@@ -1,0 +1,89 @@
+SCENE 1: OFFICE
+
+*door beep*
+
+TRENT
+"How did you get in here?"
+
+PLAYER   
+You hold up the keycard.
+"I found this outside. It let me in."
+
+TRENT  
+"That isn't what I meant."
+He points to the terminal.
+"You aren't one of our programmers. You shouldn't have been able to log in."
+
+PLAYER
+"There was a login for me, in the printer room. It was weird, but..."
+
+TRENT
+"But you were curious."
+You nod, slightly sheepishly.
+"What's your name, kid?"
+He studies you for a moment as you tell him, then sighs and shakes his head.
+"It isn't safe here. She can't hear us, but if she got you into the system, then she knows you're here. Come on."
+
+PLAYER
+"What are you talking about? Who...?"
+
+TRENT
+"Alice, that's who."
+He nearly spits out the name -- looking over his shoulder at the door for a moment. Listening for something.
+"I'll explain on the way. Come on."
+
+PLAYER
+"Hang on a second. I don't even know who you *are* --"
+
+TRENT
+"My name's Trent."
+"Right now, I'm your best shot at getting out of here alive. You're gonna have to trust me."
+if (Notebook in player)
+    His eyes flicker to the notebook in your hands.
+    "I'm glad you found that. We're gonna need it."
+else
+    He glances toward the desk, then crosses the room and puts the notebook in his jacket pocket.
+    "Better bring this with us. I think we're gonna need it."
+
+TRENT
+"Ready?"
+
+YesOrNo();
+
+if yes:
+TRENT
+"Good. Okay."
+
+if no:
+TRENT:
+"Yeah, me either."
+
+else (override message): continue
+
+TRENT
+"Come on. We don't have long."
+
+
+
+
+SCENE 2 - HALLWAY -> ICE CAVE
+(Note: eventually this will be interactive; the player will follow Trent through the hallway, down the stairs, and into the ice cave.)
+
+Trent looks around for a second before nodding toward the end of the hall, opposite the way you came.
+
+PLAYER
+"Where are we going?"
+
+TRENT
+"One of the only safe places left around here. We've only got about five minutes before Alice figures out what's going on and sends somebody after us."
+
+At the end of the hallway is a heavy, locked door, much like the others you've seen around here. Before you can reach for your keycard, Trent places a hand on the scanner.
+
+The door unlocks, revealing a set of stairs.
+
+TRENT
+"Come on. This way."
+
+And without quite knowing why, you follow him down a flight of stairs and through another locked door. But when the door opens, the forest and town are gone.
+
+down -> ice cave
