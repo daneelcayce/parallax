@@ -77,3 +77,7 @@ story/1_office.inf:
 	- remove server room -- we won't need it for the prototype
 
 
+24 May:
+Added dialogue stuff for Trent's intro cutscene. That's mostly prototyped.
+
+Next up is the actual story intro. Then playtesting/basic bugfixes, making sure the story is apparent, and... then I'm calling it good, I think.
