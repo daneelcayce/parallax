@@ -108,7 +108,7 @@ Room DirtRoad "DIRT ROAD" with
                 "The door locks behind you.";
     ],
     n_to OfficeDoor,
-    s_to Init;
+    s_to DeadEnd;
 
 Object -> KeyCard "keycard" with
     name 'keycard' 'key' 'card',

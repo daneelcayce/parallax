@@ -15,29 +15,38 @@ Scene TrentIntro "EXECUTIVE OFFICE" with
         
         print "You hold up the keycard.";
         Any();
+
         player.say("I found this outside. It let me in.");
         
         Trent.say("That isn't what I meant.");
+        
         print "He points to the terminal.";
         Any();
+        
         Trent.say("You aren't one of our programmers. You shouldn't have been able to log in.");
 
         player.say("There was a login for me, in the printer room. It was weird, but...");
 
         Trent.say("But you were curious.");
+        
         print "You nod, slightly sheepishly.";
         Any();
+        
         Trent.say("What's your name, kid?");
+        
         print "He studies you for a moment as you tell him, then sighs and shakes his head.";
         Any();
+        
         Trent.say("It isn't safe here. She can't hear us, but if she got you into the system, then she knows you're here. Come on.");
 
         player.say("What are you talking about? Who...?");
 
         Trent.say("Alice, that's who.");
+        
         print "He nearly spits out the name -- looking over his shoulder at the door for a moment. Listening for something.";
         Any();
-        Trent.say("I'll explain on the way. Come on.");
+        
+        Trent.say("I'll explain on the way.");
 
         player.say("Hang on a second. I don't even know who you *are* --");
 
@@ -69,13 +78,14 @@ Scene TrentIntro2 "OFFICE HALLWAY" with
         "Trent looks around for a second before nodding toward the end of the hall, opposite the way you came.",    
     description [;
         player.say("Where are we going?");
-        Any();
+        
         Trent.say("One of the only safe places left around here. We've only got about five minutes before Alice figures out what's going on and sends somebody after us.");
-        Any();
+        
         print("At the end of the hallway is a heavy, locked door, much like the others you've seen around here. Before you can reach for your keycard, Trent places a hand on the scanner. The door unlocks, revealing a set of stairs.");
         Any();
+        
         Trent.say("Come on. This way.");
-        Any();
+        
         print("And without quite knowing why, you follow him down a flight of stairs and through another locked door. But when the door opens, the forest and town are gone.");
         <<Go d_obj>>;
     ],
