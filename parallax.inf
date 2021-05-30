@@ -1,5 +1,5 @@
 Constant Story "PARALLAX";
-Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
+Constant Headline "^A text adventure prototype for the spring 2021 DOS Game Jam^^";
 
 #include "Parser";
 #include "VerbLib";
@@ -7,7 +7,7 @@ Constant Headline "^A text adventure for DOS Games Jam Spring 2021^^";
 ! Entry points
 [ DeathMessage;
   if (deadflag == 3) {
-    print "<END OF EXPERIMENTAL BUILD^^
+    print "<END OF PROTOTYPE BUILD>^^
           Thank you for playing!^^
           --Daneel";
   }

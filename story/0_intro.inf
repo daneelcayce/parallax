@@ -5,10 +5,54 @@
 ! -----------------------------------------------------------------------------
 ! Dirt Road Area
 ! -----------------------------------------------------------------------------
+Room Init "COFFEE SHOP" with
+    initial
+        "You've landed an interview at Elwood Electric -- a small tech company in Fernville, a little town not too far away from where you live. The job posting was a little vague -- but you have the qualifications, and honestly, which postings aren't a little vague, these days? It's worth a shot, anyway.^^
+        You've never actually been to Fernville before, and you're not really sure why. It's a cute little town, situated in a wooded valley. Lots of shops, a library, a park. You decide to stop off at a coffee shop on your way, since you have time.",
+    description [;
+        NPC.q = "BARISTA";
+        NPC.say("Haven't seen you around -- you new here?");
 
-Room Init "DEAD END" with
+        Player.say("Just here for a job interview.");
+
+        NPC.say("Ah, so... future-new-around-here. Where's the interview?");
+
+        Player.say("Elwood Electric. Some data entry job, I guess...");
+
+        print("She gives you a puzzled look for a moment.");
+        Any();
+
+        NPC.say("Really? I don't think I know anybody who works there.");
+        NPC.say("Actually, I thought the place was closed down. I never see anybody go in or out of that building. No cars in the parking lot or anything.");
+        NPC.say("When I was a kid, we used to think the place was haunted."
+"What do they do over there, anyway?");
+
+        Player.say("I, uh... I'm actually not entirely sure.");
+        Player.say("The job posting wasn't super clear. Tech jobs, y'know, they're all just a bunch of jargon strung together.");
+
+        NPC.say("Ha. Yeah. Seems like half the interview's just whether you can suss out what you're supposed to be doing.");
+
+        Player.say("Feels that way.");
+        
+        NPC.say("Here you go, hon. On the house.");
+        NPC.say("Call it an early welcome-to-town gift.");
+
+        Player.say("Oh, thank you!");
+
+        NPC.say("Mm-hmm. Good luck.");
+
+        <<Go out_obj>>;
+    ],
+    out_to DeadEnd,
+has light;
+
+
+
+Room DeadEnd "DEAD END" with
+    initial
+        "You leave the coffee shop with a bit of a spring in your step -- seems to have done you some good.",
     description
-        "You are at the dead end of a dirt road. Off in the distance to the north, you can see a few buildings, maybe the edge of a town.",
+        "You are at the dead end of a dirt road. Off in the distance to the north, you can see the Elwood Electric building.",
     n_to DirtRoad;
 
 Object -> Lamp "portable lamp" with
@@ -178,7 +222,7 @@ has static supporter;
 
 ! initial description doesn't print until after we're allowed to examine the printer
 ! description routine needs to be different between when it's still on the printer and when it's in your possession
-! and yeah yeah I know, reindeer flotilla is a little played out, fight me
+! and yes, caribou is a play on "reindeer flotilla". Let me have this.
 Object -> -> Printout "paper printout" with
     name
         'paper' 'printout' 'print',
@@ -188,7 +232,7 @@ Object -> -> Printout "paper printout" with
         }
         "The paper has three lines on it:^
         Your initials^
-        reindeerflotilla^
+        caribou^
         C212";
     ],
     before [;

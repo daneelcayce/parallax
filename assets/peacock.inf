@@ -10,7 +10,8 @@ Character Peacock "angry peacock" with
     plural
         "angry peacocks",
     description [;
-        "The peacock doesn't look very happy with you right now.";
+        move Peacock to thedark;
+        "The peacock squawks at you once or twice, then runs away.";
     ],
      life [;
         Attack: PeacockAttack();

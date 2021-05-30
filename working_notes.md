@@ -81,3 +81,11 @@ story/1_office.inf:
 Added dialogue stuff for Trent's intro cutscene. That's mostly prototyped.
 
 Next up is the actual story intro. Then playtesting/basic bugfixes, making sure the story is apparent, and... then I'm calling it good, I think.
+
+
+29 May:
+Today's goals:
+	- basic intro scene prototyping
+	- polish outro
+	- add prototype disclaimers and stuff
+
