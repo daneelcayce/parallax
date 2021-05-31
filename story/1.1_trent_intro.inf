@@ -81,12 +81,12 @@ Scene TrentIntro2 "OFFICE HALLWAY" with
         
         Trent.say("One of the only safe places left around here. We've only got about five minutes before Alice figures out what's going on and sends somebody after us.");
         
-        print("At the end of the hallway is a heavy, locked door, much like the others you've seen around here. Before you can reach for your keycard, Trent places a hand on the scanner. The door unlocks, revealing a set of stairs.");
+        print "At the end of the hallway is a heavy, locked door, much like the others you've seen around here. Before you can reach for your keycard, Trent places a hand on the scanner. The door unlocks, revealing a set of stairs.";
         Any();
         
         Trent.say("Come on. This way.");
         
-        print("And without quite knowing why, you follow him down a flight of stairs and through another locked door. But when the door opens, the forest and town are gone.");
+        print "And without quite knowing why, you follow him.";
         <<Go d_obj>>;
     ],
     d_to IceCave,
@@ -95,6 +95,6 @@ has light;
 
 
 
-Room IceCave "ICE CAVE" with
-    description
-        "temporary ice cave room";
+!Room IceCave "ICE CAVE" with
+!    description
+!        "temporary ice cave room";

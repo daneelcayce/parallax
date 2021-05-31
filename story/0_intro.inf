@@ -19,13 +19,13 @@ Room Init "COFFEE SHOP" with
 
         Player.say("Elwood Electric. Some data entry job, I guess...");
 
-        print("She gives you a puzzled look for a moment.");
+        print "She gives you a puzzled look for a moment.";
         Any();
 
         NPC.say("Really? I don't think I know anybody who works there.");
         NPC.say("Actually, I thought the place was closed down. I never see anybody go in or out of that building. No cars in the parking lot or anything.");
-        NPC.say("When I was a kid, we used to think the place was haunted."
-"What do they do over there, anyway?");
+        NPC.say("When I was a kid, we used to think the place was haunted.");
+        NPC.say("What do they do over there, anyway?");
 
         Player.say("I, uh... I'm actually not entirely sure.");
         Player.say("The job posting wasn't super clear. Tech jobs, y'know, they're all just a bunch of jargon strung together.");
