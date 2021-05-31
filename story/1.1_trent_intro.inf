@@ -4,6 +4,7 @@
 ! -----------------------------------------------------------------------------
 Scene TrentIntro "EXECUTIVE OFFICE" with
     initial [;
+        ClearScreen();
         "As you walk down the hallway, you suddenly find yourself yanked backwards by your wrist. Before you can protest, you're back in the office -- facing a tall, serious-looking man.^^
         Something about his expression says that this is his office -- and he's not very pleased with your intrusion.^^";
     ],
@@ -74,20 +75,24 @@ has light;
 
 
 Scene TrentIntro2 "OFFICE HALLWAY" with
-    initial
-        "Trent looks around for a second before nodding toward the end of the hall, opposite the way you came.",    
+    initial [;
+        ClearScreen();
+        print "Trent looks around for a second before nodding toward the end of the hall, opposite the way you came.";
+        Any();
+    ],
     description [;
         player.say("Where are we going?");
         
         Trent.say("One of the only safe places left around here. We've only got about five minutes before Alice figures out what's going on and sends somebody after us.");
         
-        print "At the end of the hallway is a heavy, locked door, much like the others you've seen around here. Before you can reach for your keycard, Trent places a hand on the scanner. The door unlocks, revealing a set of stairs.";
+        print "At the end of the hallway is a heavy, locked door, much like the others you've seen around here. Before you can reach for your keycard, Trent places a hand on the scanner. The door unlocks, revealing a set of stairs." ;
         Any();
         
         Trent.say("Come on. This way.");
-        
-        print "And without quite knowing why, you follow him.";
-        <<Go d_obj>>;
+
+        print "And without really knowing why, you follow him.";
+        Any();
+        deadflag = 3;
     ],
     d_to IceCave,
 has light;
@@ -95,6 +100,7 @@ has light;
 
 
 
-!Room IceCave "ICE CAVE" with
-!    description
-!        "temporary ice cave room";
+Room IceCave "ICE CAVE" with
+    description
+        "temporary ice cave room",
+has light;

@@ -6,10 +6,13 @@
 ! Dirt Road Area
 ! -----------------------------------------------------------------------------
 Room Init "COFFEE SHOP" with
-    initial
-        "You've landed an interview at Elwood Electric -- a small tech company in Fernville, a little town not too far away from where you live. The job posting was a little vague -- but you have the qualifications, and honestly, which postings aren't a little vague, these days? It's worth a shot, anyway.^^
-        You've never actually been to Fernville before, and you're not really sure why. It's a cute little town, situated in a wooded valley. Lots of shops, a library, a park. You decide to stop off at a coffee shop on your way, since you have time.",
+    initial [;
+        print "^You've landed an interview at Elwood Electric -- a small tech company in Fernville, a little town not too far away from where you live. The job posting was a little vague -- but you have the qualifications, and honestly, which postings aren't a little vague, these days? It's worth a shot.^^
+        You've never actually been to Fernville before, and you're not really sure why. It's a cute little town, situated in a wooded valley. Lots of shops, a library, a park. You decide to stop off at a coffee shop on your way, since you have time.";
+        Any();
+    ],
     description [;
+        ClearScreen();
         NPC.q = "BARISTA";
         NPC.say("Haven't seen you around -- you new here?");
 
@@ -49,8 +52,11 @@ has light;
 
 
 Room DeadEnd "DEAD END" with
-    initial
-        "You leave the coffee shop with a bit of a spring in your step -- seems to have done you some good.",
+    initial [;
+        print "You leave the coffee shop with a bit of a spring in your step -- seems to have done you some good.";
+        Any();
+        ClearScreen();
+    ],
     description
         "You are at the dead end of a dirt road. Off in the distance to the north, you can see the Elwood Electric building.",
     n_to DirtRoad;
@@ -140,11 +146,9 @@ Object OfficeDoor "door" with
     with_key KeyCard,
     before [;
         Open:
-            if (KeyCard in player) rfalse;
-            if (player in DirtRoad)
+            if (~(KeyCard in player) && (player in DirtRoad))
                 KeyCard.cant_go();
-            print "The door emits a steady beep, and the light turns green.";
-            rfalse;
+            "The door emits a steady beep, and the light turns green.";
     ],
     when_closed
         "A steady red light glows from above the door's handle.",
@@ -199,7 +203,8 @@ Room PrinterRoom "PRINTER ROOM" with
     description
         "You are in a printer room.^^
         The main office space is to the south of you.",
-        s_to OfficeSpace;
+        s_to OfficeSpace,
+        out_to OfficeSpace;
 
 Object -> Printer "dot matrix printer" with
     name
@@ -242,5 +247,5 @@ Object -> -> Printout "paper printout" with
                     print "The paper tears at the perforation with a very satisfying sound.^";
     ],
     after [;
-        Take:   "You tuck the printout into your bag.";
+        Take:   self.description(); rtrue;
     ];

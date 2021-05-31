@@ -7,3 +7,6 @@ Extend 'sit'
 
 Verb 'use'
     * 'terminal' -> Term;
+
+Verb 'login'
+    * -> Term;

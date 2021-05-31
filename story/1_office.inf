@@ -5,23 +5,30 @@
 
 Room ExecOffice "EXECUTIVE OFFICE" with
     initial [;
+        if (self hasnt visited) {
+        ClearScreen();
         print "Up the stairs, you find yourself in a long hallway. It doesn't take you long, however, to find the room number written on the paper.";
         Any();
         print "The door opens with the keycard you found -- maybe this is the owner's office?";
         Any();
         "Well, whoever's office this is, they're probably lower management -- it's nice, but not ostentatious. There sure is a lot of stuff here, though...";
+        }
+        rtrue;
     ],
     description
         "You are in an executive office.",
     before [;
-        Go:     if ((noun == d_obj) || (second == d_obj)) {
-                    if (Terminal has visited)
+        Go:     if ((noun == d_obj or out_obj) || (second == d_obj or out_obj))
+                {
+                    if (Terminal has general) {
                         move Trent to TrentIntro;
                         PlayScene(TrentIntro);
                         rtrue;
-        }
+                    }
+                }
     ],
     d_to OfficeSpace,
+    out_to OfficeSpace,
 has ~light;
 
     
