@@ -89,3 +89,5 @@ Today's goals:
 	- polish outro
 	- add prototype disclaimers and stuff
 
+31 May:
+HOLY SHIT IT'S BASICALLY DONE.
