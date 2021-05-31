@@ -39,7 +39,5 @@ Constant Headline "^A text adventure prototype for the spring 2021 DOS Game Jam^
   move Terminal to ExecOffice;
   player = Me;
 ! changed for testing/debugging
-  move KeyCard to player;
-  move Printout to player;
-  location = ExecOffice;
+  location = Init;
 ];
