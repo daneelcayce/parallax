@@ -1,0 +1,50 @@
+! Intro scene dialogue and stuff.
+
+You've landed an interview at Elwood Electric -- a small tech company in Fernville, a little town not too far away from where you live. The job posting was a little vague -- but you have the qualifications, and honestly, which postings aren't a little vague, these days? It's worth a shot, anyway.
+
+You've never actually been to Fernville before, and you're not really sure why. It's a cute little town, situated in a wooded valley. Lots of shops, a library, a park. You decide to stop off at a coffee shop on your way, since you have time.
+
+
+BARISTA
+"Haven't seen you around -- you new here?"
+
+PLAYER
+"Just here for a job interview."
+
+BARISTA
+"Ah, so... future-new-around-here. Where's the interview?"
+
+PLAYER
+"Elwood Electric. Some data entry job, I guess..."
+
+She gives you a puzzled look for a moment.
+
+BARISTA
+"Really? I don't think I know anybody who works there."
+
+BARISTA
+"Actually, I thought the place was closed down. I never see anybody go in or out of that building. No cars in the parking lot or anything."
+"When I was a kid, we used to think the place was haunted."
+"What do they do over there, anyway?"
+
+PLAYER
+"I, uh... I'm actually not entirely sure."
+"The job posting wasn't super clear. Tech jobs, y'know, they're all just a bunch of jargon strung together."
+
+BARISTA
+"Ha. Yeah. Seems like half the interview's just whether you can suss out what you're supposed to be doing."
+
+PLAYER
+"Feels that way."
+
+BARISTA
+"Here you go, hon. On the house."
+"Call it an early welcome-to-town gift."
+
+PLAYER
+"Oh, thank you!"
+
+BARISTA
+"Mm-hmm. Good luck."
+
+

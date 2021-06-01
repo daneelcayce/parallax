@@ -1,0 +1,102 @@
+! -----------------------------------------------------------------------------
+! Executive office
+! The terminal is located here, but it has its own file (assets/tty.inf).
+! -----------------------------------------------------------------------------
+
+Room ExecOffice "EXECUTIVE OFFICE" with
+    initial [;
+        if (self hasnt visited) {
+        ClearScreen();
+        print "Up the stairs, you find yourself in a long hallway. It doesn't take you long, however, to find the room number written on the paper.";
+        Any();
+        print "The door opens with the keycard you found -- maybe this is the owner's office?";
+        Any();
+        "Well, whoever's office this is, they're probably lower management -- it's nice, but not ostentatious. There sure is a lot of stuff here, though...";
+        }
+        rtrue;
+    ],
+    description
+        "You are in an executive office.",
+    before [;
+        Go:     if ((noun == d_obj or out_obj) || (second == d_obj or out_obj))
+                {
+                    if (Terminal has general) {
+                        move Trent to TrentIntro;
+                        PlayScene(TrentIntro);
+                        rtrue;
+                    }
+                }
+    ],
+    d_to OfficeSpace,
+    out_to OfficeSpace,
+has ~light;
+
+    
+
+Object -> Desk "desk" with
+    name
+        'desk',
+    initial
+        "A large desk, made out of dark wood, takes up the back portion of the room. In front of the high-backed desk chair, there's an old computer terminal -- it appears to be on, giving a soft light from the screen.",
+    description
+        "The desk doesn't seem to have much else on it.",
+has static supporter;
+
+
+Object -> -> Notebook "notebook" with
+    name
+        'notebook' 'book',
+    description
+        "It's a fairly nice, hardcover notebook. It's probably pretty old. But when you flip open the front cover, there isn't anything written in it.";
+
+Object -> OfficeShelf "shelf" with
+    name
+        'shelf',
+    initial
+        "There's a wooden bookshelf here.",
+    description
+        "About half of the shelves are filled with books, and the rest have a wide array of objects on them.",
+has static supporter;
+
+Object -> -> Abstract "journal article" with
+    name
+        'article' 'journal' 'abstract',
+    initial
+        "*** A STUDY OF MACHINE INTELLIGENCE AND LANGUAGE PROCESSING ***^
+        T.C. PERRY",
+    description
+        "Looks like an old academic journal article.",
+    after [;
+        Examine: self.initial();
+    ];
+
+Object -> -> Theseus "mechanical maze" with
+    name
+        'theseus' 'maze' 'mouse',
+    description
+        "There's a little oblong metal thing in one of the maze corners. Kind of looks like a mouse.",
+    before [;
+        Take:   "It looks pretty heavy.";
+    ],
+has static;
+
+Object -> -> Chessboard "chessboard" with
+    name
+        'chess' 'board' 'chessboard',
+    description
+        "It looks like there's a game in progress, but you can't tell who seems to be winning.",
+    before [;
+        Take:   "Probably best to leave it alone. You wouldn't want to mess with someone's game, would you?";
+    ],
+has static;
+
+Object -> -> Giant "old laptop" with
+    name
+        'laptop' 'PC' 'compatible' 'PC-compatible',
+    description
+        "Maybe ~laptop~ is a little generous. It's one of those old IBM PC compatible machines. Probably weighs around fifteen pounds or so -- but that's what passed for portable in 1983.",
+    before [;
+        Take:   "Despite its name, it's hardly portable.";
+    ];
+
+
