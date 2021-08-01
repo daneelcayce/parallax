@@ -1,0 +1,43 @@
+Constant Story "PARALLAX";
+Constant Headline "^A text adventure prototype for the spring 2021 DOS Game Jam^^";
+
+#include "Parser";
+#include "VerbLib";
+
+! Entry points
+[ DeathMessage;
+  if (deadflag == 3) {
+    print "<END OF PROTOTYPE BUILD>^^
+          Thank you for playing!^^
+          --Daneel";
+  }
+  else rfalse;
+];
+
+#include "Grammar";
+
+! Engine components
+#include ">engine/core.h";
+#include ">engine/char.h";
+#include ">engine/ext_grammar.h";
+
+! Game assets
+! Users help me the peacock has its own asset file
+#include ">assets/peacock.inf";
+#include ">assets/trent.inf";
+#include ">assets/tty.inf";
+
+! Story files
+#include ">story/0_intro.inf";
+#include ">story/1_office.inf";
+#include ">story/1.1_trent_intro.inf";
+
+
+! Game setup; move stuff to where it goes
+[ Initialise;
+  move Peacock to PrinterRoom;
+  move Terminal to ExecOffice;
+  player = Me;
+! changed for testing/debugging
+  location = Init;
+];

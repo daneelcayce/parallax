@@ -1,0 +1,26 @@
+! -----------------------------------------------------------------------------
+! Terminal object file
+! -----------------------------------------------------------------------------
+
+Object -> -> Terminal "terminal" with
+    name
+        'terminal' 'computer' 'term',
+    description
+        "It's an old computer terminal. Wonder if this is what your login credentials are for?",
+    login [;
+        give self general;
+        print "You sit down at the terminal and type in the credentials written on the paper. When you hit the return key, you start to feel a little strange -- lightheaded, almost nauseous.";
+        Any();
+        print "You screw your eyes shut for a moment -- and after a few deep breaths, you feel much better. When you open your eyes, there's a message on the terminal screen.";
+        Any();
+            ">> Welcome.^
+            >> This isn't an ideal way for us to meet, but hello. My name is Alice.^
+            >> I brought you here because I need your help.^
+            >> I'll meet you outside, and then I'll explain everything.";
+    ],
+has static scenery light ~visited;
+
+
+[ TermSub;
+    Terminal.login();
+];
